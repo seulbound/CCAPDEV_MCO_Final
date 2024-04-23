@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400');
+
+/* Ensure font consistency */
+body {
+    text-align: center;
+    margin: 40px;
+    font-family: 'Mulish', sans-serif;
+}
+
+/* Style for the panel containing reservation information */
+.panel {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* Style for the container of reservation-related content */
+.reservation-container {
+    margin-top: 20px;
+}
+
+/* Style for headings */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Style for the seat grid */
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Adjust as needed */
+    gap: 10px; /* Adjust the gap between seats */
+}
+
+/* Style for individual seats */
+.seat {
+    width: 50px; /* Adjust the width of each seat */
+    height: 50px; /* Adjust the height of each seat */
+    background-color: #27ae60; /* Default background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    transition: background-color 0.3s, filter 0.3s; /* Added filter transition */
+}
+
+/* Style for selected seats */
+.seat.selected {
+    background-color: #f39c12; /* Change background color when selected */
+    filter: brightness(1.2); /* Brighten the color */
+}
+
+/* Style for available seats on hover */
+.seat:hover[data-status="available"] {
+    filter: brightness(0.8);
+}
+
+/* Style for taken seats */
+.seat[data-status="taken"] {
+    background-color: #e74c3c;
+    cursor: not-allowed;
+}
+
+/* Style for the legend */
+.legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Style for legend items */
+.legend-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for legend colors */
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Style for available legend color */
+.available .legend-color {
+    background-color: #289455;
+}
+
+/* Style for taken legend color */
+.taken .legend-color {
+    background-color: #e74c3c;
+}
+
+/* Style for legend item text */
+.legend-item span {
+    font-size: 16px;
+}
+
+/* Style for buttons */
+.buttons {
+    margin-top: 20px;
+}
+
+/* Style for confirm and back buttons */
+.confirm-button,
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style for disabled confirm button */
+.confirm-button:disabled {
+    background-color: #95a5a6; /* Grey out the confirm button when disabled */
+    cursor: not-allowed;
+}
+
+/* Style for enabled confirm button */
+.confirm-button {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+/* Style for confirm button on hover */
+.confirm-button:hover {
+    background-color: #218c57;
+}
+
+/* Style for back button */
+.back-button {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Style for back button on hover */
+.back-button:hover {
+    background-color: #9b4a47;
+}
+
+/* Style for overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1000;
+}
+
+/* Style for confirmation panel */
+.confirmation-panel {
+    position: fixed; /* Ensure position is set */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2000; /* Increase z-index to make it appear above the overlay */
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for checkbox container */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Style for checkbox input */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Style for checkmark */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+/* Style for hover effect on checkbox */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* Style for checked checkbox */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #27ae60;
+}
+
+/* Style for green button */
+.green-button {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+/* Style for green button on hover */
+.green-button:hover {
+    background-color: #218c57;
+}
+
+/* Style for red button */
+.red-button {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Style for red button on hover */
+.red-button:hover {
+    background-color: #9b4a47;
+}
+
+/* Style for tooltip */
+.tooltip {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+/* Add hover effect for taken seats */
+.seat[data-status="taken"]:hover {
+    cursor: pointer;
+}
+
+.datetime-input-container {
+    font-family: 'Mulish', sans-serif; 
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center; 
+}
+
+.datetime-input-container label {
+    margin-right: 20px; 
+}
+
+.datetime-input-container input,
+.datetime-input-container select {
+    margin-right: 20px; 
+    font-family: 'Mulish', sans-serif;
+    background-color: white;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 6px 8px; 
+}
+
+.datetime-input-container input:focus,
+.datetime-input-container select:focus {
+    border-color: #00703C; 
+    outline: none;
+}
+

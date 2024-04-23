@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/bookings.css">
+    <script src="bookingslt.js"></script>
+    <title>Bookings</title>
+</head>
+
+<body>
+    <input type="hidden" id="username" name="username" value="{{user.firstName}} {{user.lastName}}">
+    <div id="errorMessage" style="color: red; margin-bottom: 10px;"></div>
+    
+    <div class="datetime-input-container">
+        <label for="labInput">Select a lab:</label>
+        <select id="labInput">
+            {{#each labs}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+
+        <label for="dateInput">Select a weekday:</label>
+        <input type="date" id="dateInput">
+
+        <label for="timeSlot">Select a time slot:</label>
+        <select id="timeSlotInput">
+            <option value="9:00">9:00 - 9:30</option>
+            <option value="9:45">9:45 - 10:15</option>
+            <option value="10:30">10:30 - 11:00</option>
+            <option value="13:00">1:00 - 1:30</option>
+            <option value="13:45">1:45 - 2:15</option>
+            <option value="14:30">2:30 - 3:00</option>
+        </select>
+    </div>
+
+    <div class="panel">
+        <div class="reservation-container">
+            <h2>Please Select a Seat</h2>
+            
+            <div class="seat-grid">
+                {{#each seats}}
+                    <div class="seat" data-status="{{status}}">{{seat}}</div>
+                {{/each}}
+            </div>
+
+            <div class="legend">
+                <div class="legend-item available">
+                    <div class="legend-color green"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item taken">
+                    <div class="legend-color red"></div>
+                    <span>Taken</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="confirm-button" disabled>Confirm</button>
+                <button class="back-button" onclick="window.location.href='../editreservation'">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" style="display: none;"></div>
+
+ <!-- Confirmation Panel -->
+    <div class="confirmation-panel" id="confirmation-panel" style="display: none;">
+        <h2>Confirm Reservation</h2>
+        <p>Would you like to reserve the following seat(s)?</p>
+        <div id="selected-seats"></div>
+        <label class="checkbox-container">
+            <input type="checkbox" id="anonymous-checkbox">
+            <span class="checkmark"></span>
+            Anonymous Booking
+        </label>
+        <div class="confirmation-buttons">
+            <button id="confirm-reservation" class="green-button">Yes</button>
+            <button id="cancel-reservation" class="red-button">No</button>
+        </div>
+    </div>
+
+
+
+ <!-- Thank You Panel -->
+    <div class="confirmation-panel" id="thank-you-panel" style="display: none;">
+        <h2>Thank you, reservation confirmed.</h2>
+        <button id="confirm-back-button" class="green-button">Back to Main Page</button>
+    </div>
+
+
+</body>
+
+</html>

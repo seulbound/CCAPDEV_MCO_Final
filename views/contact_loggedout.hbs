@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact | AnimoLabs</title>
+    <link rel="stylesheet" href="../public/contact.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="../index"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+            <ul>
+                <li><a href="../index">Home</a></li>
+                <li class="lab-menu">Laboratories</li>
+                <li><a href="../about_loggedout">About</a></li>
+                <li><a href="../contact_loggedout">Contact</a></li>
+            </ul>
+            <a href="../login" class="Login">Login</a>
+            <a href="../register" class="Register">Register</a>
+
+            <div class="lab-dd-container">
+                <div class="lab-dd">
+                    <a href="../lab_loggedout" class="lab-dd-link">
+                        <p>Gokongwei</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>St. La Salle Hall</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>Velasco</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+
+        <div>
+            <h2>Contact</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-contents">
+                <form action="#" method="post" id="contactForm">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+                    <label for="emailAddress">Email Address:</label>
+                    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email address" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+
+                    <div class="button-group">
+                        <button type="submit" class="submit-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup-container">
+            <div class="popup">
+                <h3>Message sent</h3>
+                <p>Thank You for Your Message. We'll reach out to you when possible.</p>
+                <button class="popup-close-button">Close</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const submitButton = document.querySelector('.submit-button');
+        const popupContainer = document.querySelector('.popup-container');
+        const popup = document.querySelector('.popup');
+        const contactForm = document.getElementById('contactForm');
+        const fullNameInput = document.getElementById('fullName');
+        
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            
+            if (contactForm.checkValidity() && validateFullName(fullNameInput.value)) {
+                popupContainer.style.display = 'flex';
+                popup.style.display = 'flex';
+                contactForm.reset();
+            } else {
+                contactForm.reportValidity();
+            }
+        });
+
+        const closeButton = document.querySelector('.popup-close-button');
+        closeButton.addEventListener('click', function () {
+            popupContainer.style.display = 'none';
+            popup.style.display = 'none';
+        });
+
+        function validateFullName(name) {
+            const regex = /^[a-zA-Z\s]*$/; 
+            return regex.test(name);
+        }
+    });
+</script>
+
+</html>

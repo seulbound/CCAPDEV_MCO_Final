@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/editprofile.css">
+    <script src="loggedin.js"></script>
+    <script src="editprofile.js"></script>
+    <title>Edit Profile | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../labtech">Home</a></li>
+        </ul>
+        <img class="profile-image-nav" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profilelabtech" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofile" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <h2>Edit Profile</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="profile-container">
+            <div class="prof-pic">
+                <img src="{{ user.imagePath }}" alt="Profile Photo" class="profile-image">
+
+                <button class="delete-account-button">Delete Account</button>
+            </div>
+
+            <div class="prof-contents">
+                <form action="#" method="post">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Write something about yourself"></textarea>
+
+                    <div class="button-group">
+                        <button class="cancel-button" onclick="window.location.href='../loggedin'">Cancel</button>
+                        <button class="save-button" onclick="window.location.href='../profile'">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{#if errorMessage}}
+        <div class="error-popup-container" style="display: flex;">
+            <div class="error-popup" style="display: flex;">
+                    <h3>Invalid Name/s</h3>
+                    <p>{{errorMessage}}</p>
+                    <button class="popup-close-button">Close</button>
+            </div>
+        </div>
+    {{/if}}
+
+    <div class="popup-container">
+        <div class="popup">
+            <h3>Delete Account</h3>
+            <p>All account data will be deleted immediately. This step cannot be undone.</p>
+            <form action="#" method="post">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <div class="popup-button-group">
+                    <button class="popup-cancel-button" type="button">Cancel</button>
+                    <button type="submit" class="popup-delete-button">Delete Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const closeButton = document.querySelector('.popup-close-button');
+
+    closeButton.addEventListener('click', function () {
+        const errorPopupContainer = document.querySelector('.error-popup-container');
+        const errorPopup = document.querySelector('.error-popup');
+
+        errorPopupContainer.style.display = 'none';
+        errorPopup.style.display = 'none';
+    });
+});
+
+</script>
+    
+</html>

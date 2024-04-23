@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile | AnimoLabs</title>
+    <link rel="stylesheet" href="../public/profile.css">
+    <script src="loggedin.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png"/></a>
+            <ul>
+                <li><a href="../labtech">Home</a></li>
+            </ul>
+            <img class="profile-image-nav" src="{{user.imagePath}}" alt="Profile Photo">
+    
+            <div class="profile-dd-container">
+                <div class="profile-dd">
+                    <a href="../profilelabtech" class="user-profile">
+                        <div class="user-info">
+                            <img class="profile-img-dd" src="{{user.imagePath}}" alt="Profile Photo">
+                              <h3>{{user.firstName}} {{user.lastName}}</h3>
+                        </div>
+                    </a>
+                    <hr>
+    
+                    <a href="../editprofilelabtech" class="profile-dd-link">
+                        <img src="../public/images/icons/edit-profile.png">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                    </a>
+    
+                    <a href="../logout" class="profile-dd-link">
+                        <img src="../public/images/icons/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="profile-container">
+            <div class="prof-contents">
+                <div class="prof-image">
+                    <img src="{{user.imagePath}}" class="profile-image">
+                </div>
+                <div class="prof-info">
+                    <h2>{{user.firstName}} {{user.lastName}}</h2>
+                    <p>{{user.description}}</p>
+                </div>
+            </div>  
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="labtech-info">
+                <p><b>Contact Information</b></p>
+                <p>Email: {{user.email}}</p>
+            </div>
+    </div>
+</body>
+
+</html>

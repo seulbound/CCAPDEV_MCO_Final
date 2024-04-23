@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/labtech.css">
+    <link rel="stylesheet" href="../public/lab.css">
+    <script src="loggedin.js"></script>
+    <title>Gokongwei Labs | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../labtech">Home</a></li>
+        </ul>
+        <img class="profile-image-nav" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profilelabtech" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofilelabtech" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dropdown">
+        <label for="lab-options">Select Lab:</label>
+        <select id="lab-options" onchange="toggleLabsContainer()">
+            <option value="0">Select Lab</option>
+            <option value="1">Lab G304</option>
+            <option value="2">Lab G306</option>
+        </select>
+    </div>
+
+    <div class="labs-container" id="labs-container1">
+        <div class="lab-item" onclick="toggleLabInfo('lab-info-1')">
+            <div class="lab-info">
+                <div class="lab-name">G304</div>
+                <div class="lab-time">T 9:00-9:30</div>
+                <div class="lab-availability">
+                    <div class="status-circle available"></div>
+                    Available
+                </div>
+            </div>
+            <div class="lab-info-panel" id="lab-info-1">
+                <p>Additional information about Lab G304...</p>
+                <button class="reserve-button" onclick="window.location.href='../bookingslabtech'">Reserve</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="labs-container" id="labs-container2">
+        <div class="lab-item" onclick="toggleLabInfo('lab-info-2')">
+            <div class="lab-info">
+                <div class="lab-name">G306</div>
+                <div class="lab-time">T 10:00-10:30</div>
+                <div class="lab-availability">
+                    <div class="status-circle full"></div>
+                    Full
+                </div>
+            </div>
+            <div class="lab-info-panel" id="lab-info-2">
+                <p>Additional information about Lab G306...</p>
+                <button class="close-button">Closed</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle lab info panel visibility
+        function toggleLabInfo(panelId) {
+            var panel = document.getElementById(panelId);
+            panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'block' : 'none';
+        }
+
+        // Function to toggle labs container visibility based on the selected value
+        function toggleLabsContainer() {
+            var dropdown = document.getElementById("lab-options");
+            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            var labsContainer1 = document.getElementById("labs-container1");
+            var labsContainer2 = document.getElementById("labs-container2");
+
+            // Check the selected option and toggle visibility
+            if (selectedValue === "0") {
+                labsContainer1.style.display = "none";
+                labsContainer2.style.display = "none";
+            } else if (selectedValue === "1") {
+                labsContainer1.style.display = "flex";
+                labsContainer2.style.display = "none";
+            } else if (selectedValue === "2") {
+                labsContainer1.style.display = "none";
+                labsContainer2.style.display = "flex";
+            }
+        }
+
+        // Trigger toggleLabsContainer on window load
+        window.onload = function () {
+            toggleLabsContainer();
+        };
+    </script>
+</body>
+
+</html>

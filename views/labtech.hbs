@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/labtech.css">
+    <script src="loggedin.js"></script>
+    <title>Lab Technician Menu | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../labtech">Home</a></li>
+        </ul>
+        <img class="profile-image-nav" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profilelabtech" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofilelabtech" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome-message">
+        <h2>Welcome to AnimoLabs</h2>
+    </div>
+
+    <div class="divider"></div>
+    
+    <h3>Lab Technician Module</h3>
+
+
+    <div class="panel2">
+        <div class="button-group">
+            <a href="../createreservationlabtech" class="rectangular-button">Create a reservation</a>
+            <a href="../editreservation" class="rectangular-button">Edit a reservation</a>
+            <a href="../deletelabtech" class="rectangular-button">Cancel a reservation</a>
+            <a href="../viewreservationlabtech" class="rectangular-button">View reservations</a>
+        </div>
+    </div>
+</body>
+
+</html>

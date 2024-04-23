@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400');
+
+:root {
+    font-family: 'Mulish', sans-serif;
+}
+
+.logo{
+    width: 200px;
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: white;
+    padding: 2px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul{
+   width: 100%;
+   text-align: left; 
+   font-weight: 500;
+}
+
+nav ul li:not(.search-dd-container ul li) {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 15px;
+}
+
+nav ul li:not(.search-dd-container ul li) a {
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li:not(.search-dd-container ul li) a:hover,
+.lab-menu:hover {
+    color: #00703C;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav ul li button{
+    border: 0;
+    outline: 0;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    background-image: url('images/icons/search.png'); 
+    background-size: 20px; 
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+nav ul li button:hover {
+    background-image: url('images/icons/search-hover.png');
+}
+
+input {
+    padding: 8px ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Mulish', sans-serif;
+    width: 300px;
+}
+
+input:focus {
+    border-color: #00703C;
+    outline: none;
+}
+
+.profile-image-nav {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.search-dd-container{
+    display: none; 
+    position: absolute;
+    top: 60%;
+    right: 25%;
+    width: 301px;
+    max-height: 200px;
+    transition: max-height 0.5s;
+    z-index: 2;
+    background: white;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.search-dd-container ul{
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.search-dd-container li {
+    list-style: none;
+    border-radius: 3px;
+    padding: 8px 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #525252;
+}
+
+.search-dd-container li:hover {
+    color: #363636;
+    background-color: #dcf7eb;
+}
+
+
+.profile-image-nav {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.lab-dd-container{
+    position: absolute;
+    top: 100%;
+    right: 51%;
+    width: 280px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.lab-dd-container.open-labdd{
+    max-height: 200px;
+}
+
+.lab-dd{
+    background: white;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lab-info{
+    display:flex;
+    align-items: center;
+}
+
+.lab-dd-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+}
+
+.lab-dd-link p{
+    width: 100%;
+}
+
+.lab-dd-link span{
+    font-size: 14px;
+    transition: transform 0.5s;
+    margin-right: 5px;
+}
+
+.lab-dd-link:hover span{
+    transform: translateX(5px);
+}
+
+.lab-dd-link:hover p{
+    font-weight: 600;
+}
+
+.user-profile {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.user-profile:hover {
+    text-decoration: none;
+    color: #00703C;
+}
+
+.profile-img-dd{
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile-dd-container{
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.profile-dd-container.open-profiledd{
+    max-height: 350px;
+}
+
+.profile-dd{
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dd hr{
+    border: 0;
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+
+.user-info{
+    display:flex;
+    align-items: center;
+}
+
+.user-info h3{
+    font-weight: 600;
+}
+
+
+.profile-dd-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 8px 0;
+}
+
+.profile-dd-link p{
+    width: 100%;
+}
+
+.profile-dd-link img{
+    width: 30px;
+    background: white;
+    padding: 5px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.profile-dd-link span{
+    font-size: 16px;
+    transition: transform 0.5s;
+    margin-right: 5px;
+}
+
+.profile-dd-link:hover span{
+    transform: translateX(5px);
+}
+
+.profile-dd-link:hover p{
+    font-weight: 600;
+}
+
+.profile-container {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.prof-contents {
+    background-color: white;
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    margin: 20px;
+}
+
+.prof-image {
+    width: 240px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.prof-info {
+    display: flex;
+    flex-direction: column; 
+    text-align: left;
+    width: 600px;
+}
+
+.prof-info h2{
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+
+.divider {
+    width: 890px;
+    height: 2.5px;
+    background-color: black;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-section {
+    margin-bottom: 40px; 
+}
+
+.reservation-table {
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px auto 30px;
+}
+
+.reservation-table thead tr {
+    background-color: #00703C;
+    color: white;
+    text-align: left;
+    font-weight: 500;
+}
+
+.reservation-table th,
+.reservation-table td {
+    padding: 12px 15px;
+}
+
+.reservation-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.reservation-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.reservation-table tbody tr:last-of-type {
+    border-bottom: 2px solid #00703C;
+}
+
+.reservation-table tbody tr.active-row {
+    font-weight: bold;
+    color: #00703C;
+}
+
+.labtech-info {
+    margin: 20px auto 30px;
+    margin-left: 345px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/register.css">
+    <title>Register - DLSU Lab Reservation</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Create an Account</h2>
+
+        <!-- Error message display -->
+        {{#if errorMessage}}
+        <p class="error-message">{{errorMessage}}</p>
+        {{/if}}
+
+        <form id="registerForm" action="#" method="post">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit" id="createAccount">Create Account</button>
+            <button type="button" id="backButton" onclick="window.location.href='../index'">Back</button>
+        </form>
+
+        <div class="login-section">
+            <p>Already have an account? <a href="../login">Login</a></p>
+        </div>
+    </div>
+    <script src="/register.js"></script>
+</body>
+
+</html>

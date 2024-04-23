@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Reservations | AnimoLabs</title>
+    <link rel="stylesheet" href="../public/userreservations.css">
+    <script src="loggedin.js"></script>
+    <script src="search.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="../loggedin"><img class="logo" src="../public/images/dlsu-logo-green.png"/></a>
+            <ul>
+                <li><a href="../loggedin">Home</a></li>
+                <li class="lab-menu">Laboratories</li>
+                <li><a href="../about">About</a></li>
+                <li><a href="../contact">Contact</a></li>
+                <li class="search-container">
+                    <button type="submit" class="search-button"></button>
+                    <input type="text" id="searchInput" name="searchInput" placeholder="Search for users..." autocomplete="off">   
+                </li>
+            </ul>
+            <img class="profile-image-nav" src="{{ user.imagePath }}" alt="Profile Photo">
+            
+            <div class="search-dd-container">
+                <ul id="user-result">  
+                </ul>
+            </div>
+
+            <div class="lab-dd-container">
+                <div class="lab-dd">
+                    <a href="../lab" class="lab-dd-link">
+                        <p>Gokongwei</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>St. La Salle Hall</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>Velasco</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-dd-container">
+                <div class="profile-dd">
+                    <a href="../profile" class="user-profile">
+                        <div class="user-info">
+                            <img class="profile-img-dd" src="{{user.imagePath}}" alt="Profile Photo">
+                              <h3>{{user.firstName}} {{user.lastName}}</h3>
+                        </div>
+                    </a>
+                    <hr>
+
+                    <a href="../editprofile" class="profile-dd-link">
+                        <img src="../public/images/icons/edit-profile.png">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="../userreservations" class="profile-dd-link">
+                        <img src="../public/images/icons/reservation.png">
+                        <p>My Reservations</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="../logout" class="profile-dd-link">
+                        <img src="../public/images/icons/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <h2>My Reservations</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="reservation-container">
+            <h3>Ongoing reservations</h3>
+            <table class="ongoing-reservation-table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Laboratory Name</th>
+                        <th>Seat Number</th>
+                        <th>Date and Time of Request</th>
+                        <th>Date and Time of Reservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each reservations}}
+                    {{#if (isEqual this.status 'Ongoing')}}                    
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{selectedLab}}</td>
+                        <td>{{selectedSeats}}</td>
+                        <td>{{requestDate}} {{requestTime}}</td>
+                        <td>{{selectedDate}} {{selectedTimeSlot}}-{{addHalfHour selectedTimeSlot}}</td>
+                    </tr>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <div class="inner-divider"></div>
+            <h3>Completed reservations</h3>
+
+            <table class="completed-reservation-table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Laboratory Name</th>
+                        <th>Seat Number</th>
+                        <th>Date and Time of Request</th>
+                        <th>Date and Time of Reservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each reservations}}
+                    {{#if (isEqual this.status 'Completed')}}                    
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{selectedLab}}</td>
+                        <td>{{selectedSeats}}</td>
+                        <td>{{requestDate}} {{requestTime}}</td>
+                        <td>{{selectedDate}} {{selectedTimeSlot}}-{{addHalfHour selectedTimeSlot}}</td>
+                    </tr>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <div class="inner-divider"></div>
+            <h3>Cancelled reservations</h3>
+
+            <table class="cancelled-reservation-table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Laboratory Name</th>
+                        <th>Seat Number</th>
+                        <th>Date and Time of Request</th>
+                        <th>Date and Time of Reservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each reservations}}
+                    {{#if (isEqual this.status 'Cancelled')}}                    
+                    <tr>
+                        <td>{{@index}}</td>
+                        <td>{{selectedLab}}</td>
+                        <td>{{selectedSeats}}</td>
+                        <td>{{requestDate}} {{requestTime}}</td>
+                        <td>{{selectedDate}} {{selectedTimeSlot}}-{{addHalfHour selectedTimeSlot}}</td>
+                    </tr>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

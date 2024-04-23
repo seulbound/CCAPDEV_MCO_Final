@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/lab.css">
+    <script src="loggedin.js"></script>
+    <script src="search.js"></script>
+    <title>Gokongwei Labs | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../loggedin"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../loggedin">Home</a></li>
+            <li class="lab-menu">Laboratories</li>
+            <li><a href="../about">About</a></li>
+            <li><a href="../contact">Contact</a></li>
+            <li class="search-container">
+                    <button type="submit" class="search-button"></button>
+                    <input type="text" id="searchInput" name="searchInput" placeholder="Search for users..." autocomplete="off">   
+            </li>
+        </ul>
+            <img class="profile-image-nav" src="{{ user.imagePath }}" alt="Profile Photo">
+            
+        <div class="search-dd-container">
+            <ul id="user-result">  
+            </ul>
+        </div>
+
+        <div class="lab-dd-container">
+            <div class="lab-dd">
+                <a href="../lab" class="lab-dd-link">
+                    <p>Gokongwei</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="lab-dd-link">
+                    <p>St. La Salle Hall</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="lab-dd-link">
+                    <p>Velasco</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profile" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="{{ user.imagePath }}" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofile" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../userreservations" class="profile-dd-link">
+                    <img src="../public/images/icons/reservation.png">
+                    <p>My Reservations</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="title-container">
+        <h2>Gokongwei Laboratories</h2>
+        <div class="divider"></div>
+    </div>
+
+    {{#each labs}}
+    <div class="labs-container" id="labs-container{{@index}}">
+        <div class="lab-item" onclick="toggleLabInfo('lab-info-{{@index}}')">
+            <div class="lab-info">
+                <div class="lab-name">{{this.labName}}</div>
+                <div class="lab-availability">
+                    <div class="status-circle available"></div>
+                    Available
+                </div>
+            </div>
+            <div class="lab-info-panel" id="lab-info-{{@index}}">
+                <button class="reserve-button" onclick="window.location.href='../bookings?labNum={{this.labName}}'">Reserve</button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    
+    <script>
+        function toggleLabInfo(panelId) {
+            var panel = document.getElementById(panelId);
+            panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleLabsContainer() {
+            var dropdown = document.getElementById("lab-options");
+            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            var labsContainer1 = document.getElementById("labs-container1");
+            var labsContainer2 = document.getElementById("labs-container2");
+            console.log('Selected Lab:', selectedValue);
+            if (selectedValue === "0") {
+                labsContainer1.style.display = "none";
+                labsContainer2.style.display = "none";
+            } else if (selectedValue === "1") {
+                labsContainer1.style.display = "flex";
+                labsContainer2.style.display = "none";
+            } else if (selectedValue === "2") {
+                labsContainer1.style.display = "none";
+                labsContainer2.style.display = "flex";
+            }
+        }
+
+       function checkDateInput() {
+        const dateInput = document.getElementById('dateInput');
+
+        dateInput.addEventListener('input', function () {
+            const selectedDate = new Date(dateInput.value);
+            const dayOfWeek = selectedDate.getDay();
+
+            if (dayOfWeek === 6 || dayOfWeek === 0) {
+                alert('Please select a weekday (Monday to Friday).');
+                dateInput.value = '';
+            }
+        });
+    }
+
+
+       function timeSlotDropdown() {
+    const timeSlotDropdown = document.getElementById('timeSlotInput');
+
+    timeSlotDropdown.addEventListener('change', function () {
+        const selectedTimeSlot = timeSlotDropdown.value;
+        console.log('Selected Time Slot:', selectedTimeSlot);
+    });
+}
+
+        window.onload = function () {
+            toggleLabsContainer();
+            checkDateInput();
+            timeSlotDropdown();
+        };
+    </script>
+</body>
+
+</html>

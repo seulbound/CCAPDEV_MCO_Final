@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400');
+
+:root {
+    font-family: 'Mulish', sans-serif;
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #f4f4f4;
+}
+
+.form-container {
+    max-width: 500px; 
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin: 0 auto 10px; 
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus{
+    border-color: #00703C;
+    outline: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: #00703C;
+    color: #fff;
+    transition: background-color 0.3s;
+    font-family: 'Mulish', sans-serif;
+}
+
+button:hover {
+    background-color: #004E2A;
+}
+
+#backButton {
+    background-color: white; 
+    color: #00703C;
+    transition: background-color 0.3s;
+    font-family: 'Mulish', sans-serif;
+    border: 2.5px solid #00703C;    
+
+}
+
+#backButton:hover {
+    background-color: #e9e9e9; 
+}
+
+.login-section {
+    margin-top: 20px;
+}
+
+.login-section p {
+    color: #333;
+}
+
+.login-section a {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+.login-section a:hover {
+    color: #2a75a0;
+}

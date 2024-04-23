@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/labtech.css">
+    <script src="loggedin.js"></script>
+
+    <title>Create Reservation | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../labtech">Home</a></li>
+        </ul>
+        <img class="profile-image-nav" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profilelabtech" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofilelabtech" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome-message">
+        <h2>Create a reservation</h2>
+    </div>
+
+    <div class="divider"></div>
+
+
+    <div class="panel2">
+        <div class="button-group">
+            <form id="create-form">
+            <form id="create-form">
+                <label for="first-name">Enter Student First Name:</label>
+                <input type="text" id="first-name" name="first-name" required><br>
+                <label for="last-name">Enter Student Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required><br>
+                <button type="submit" class="rectangular-button">Create Reservation</button>
+            </form>
+            <button class="back-button" onclick="window.location.href='../labtech'">Back</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("create-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var firstName = document.getElementById("first-name").value;
+            var lastName = document.getElementById("last-name").value;
+            window.location.href = '../bookingslabtech';
+        });
+    </script>
+</body>
+
+</html>
+
+

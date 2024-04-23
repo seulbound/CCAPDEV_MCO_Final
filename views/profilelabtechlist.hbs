@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lab Technicians | AnimoLabs</title>
+    <link rel="stylesheet" href="../public/profile.css">
+    <link rel="stylesheet" href="../public/labtechlist.css">
+    <script src="loggedin.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="../loggedin"><img class="logo" src="../public/images/dlsu-logo-green.png"/></a>
+            <ul>
+                <li><a href="../loggedin">Home</a></li>
+                <li class="lab-menu">Laboratories</li>
+                <li><a href="../about">About</a></li>
+                <li><a href="../contact">Contact</a></li>
+                <li><a href="../users">Users</a></li>
+                <li><a href="../profilelabtechlist">Lab Technicians</a></li>
+            </ul>
+            <img class="profile-image-nav" src="../public/images/profile.jpg" alt="Profile Photo">
+
+            <div class="lab-dd-container">
+                <div class="lab-dd">
+                    <a href="../lab" class="lab-dd-link">
+                        <p>Gokongwei</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>St. La Salle Hall</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="lab-dd-link">
+                        <p>Velasco</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-dd-container">
+                <div class="profile-dd">
+                    <a href="../profile" class="user-profile">
+                        <div class="user-info">
+                            <img class="profile-img-dd" src="../public/images/profile.jpg" alt="Profile Photo">
+                              <h3>{{user.firstName}} {{user.lastName}}</h3>
+                        </div>
+                    </a>
+                    <hr>
+
+                    <a href="../editprofile" class="profile-dd-link">
+                        <img src="../public/images/icons/edit-profile.png">
+                        <p>Edit Profile</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="../userreservations" class="profile-dd-link">
+                        <img src="../public/images/icons/reservation.png">
+                        <p>My Reservations</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="../logout" class="profile-dd-link">
+                        <img src="../public/images/icons/logout.png">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="title-container">
+            <h2>Lab Technicians</h2>
+            <div class="divider"></div>
+        </div>
+        
+        {{#each technicians}}
+            {{#if this.isLabTechnician}}
+                <div class="profile-container">
+                    <div class="prof-contents">
+                        <div class="prof-image">
+                            <img src="../public/images/default.jpg" class="profile-image">
+                        </div>
+                        <div class="prof-info">
+                            <h2>{{this.firstName}} {{this.lastName}}</h2>
+                            <p>{{this.email}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</body>
+
+</html>

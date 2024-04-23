@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/labtech.css">
+    <script src="loggedin.js"></script>
+    <script src="filter.js"></script>
+    <title>Lab Technician Menu | AnimoLabs</title>
+</head>
+
+<body>
+    <nav>
+        <a href="../labtech"><img class="logo" src="../public/images/dlsu-logo-green.png" /></a>
+        <ul>
+            <li><a href="../labtech">Home</a></li>
+        </ul>
+        <img class="profile-image-nav" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+
+        <div class="profile-dd-container">
+            <div class="profile-dd">
+                <a href="../profilelabtech" class="user-profile">
+                    <div class="user-info">
+                        <img class="profile-img-dd" src="../public/images/labtech-profile.jpg" alt="Profile Photo">
+                          <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    </div>
+                </a>
+                <hr>
+
+                <a href="../editprofilelabtech" class="profile-dd-link">
+                    <img src="../public/images/icons/edit-profile.png">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+
+                <a href="../logout" class="profile-dd-link">
+                    <img src="../public/images/icons/logout.png">
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="welcome-message">
+        <h2>View reservations</h2>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>Filter by:</h3>
+        <div class="filter-container">
+            <label for="labInput">Select a lab:</label>
+            <select id="labInput">
+                <option value="">Select a lab</option>
+                {{#each labs}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+
+            <label for="dateInput">Select a weekday:</label>
+            <input type="date" id="dateInput">
+
+            <label for="timeSlot">Select a time slot:</label>
+            <select id="timeSlotInput">
+                <option value="">Select a time slot</option>
+                <option value="9:00">9:00 - 9:30</option>
+                <option value="9:45">9:45 - 10:15</option>
+                <option value="10:30">10:30 - 11:00</option>
+                <option value="13:00">1:00 - 1:30</option>
+                <option value="13:45">1:45 - 2:15</option>
+                <option value="14:30">2:30 - 3:00</option>
+            </select>
+
+            <label for="status">Select a time slot:</label>
+            <select id="statusInput">
+                <option value="">Select a status</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <label for="name">Enter a name:</label>
+            <input type="text" id="searchInput" name="searchInput" placeholder="Search for users..." autocomplete="off"> 
+
+            <button id="clear-button">Clear</button>
+        </div>
+
+        <table id="reservation-table-list" class="reservation-table-list">
+            <thead>
+                <tr>
+                    <th>Lab</th>
+                    <th>Seats</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Reservee</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each bookings}}
+                <tr>
+                    <td>{{selectedLab}}</td>
+                    <td>{{selectedSeats}}</td>
+                    <td>{{selectedDate}}</td>
+                    <td>{{selectedTimeSlot}}-{{addHalfHour selectedTimeSlot}}</td>
+                    <td>{{status}}</td>
+                    <td>{{reservedUser}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+</body>
+</html>

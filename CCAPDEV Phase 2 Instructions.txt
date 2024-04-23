@@ -1,0 +1,26 @@
+Instructions:
+
+
+Step 1 - Open Command Prompt a
+Step 2 - CD to target folder
+Step (Optional) 
+- Enter npm init -y
+- npm install
+
+Step 3 -
+For Mongo DB Compass
+the database name is animoLabsDB
+
+Import the following collection into the database via compass (csv files)
+For the collections names it would be the following
+
+laboratory
+labtech
+labtimeslot
+reservation
+student
+useraccount
+
+Step - 4 Save
+Step - 5 Go back to command prompt and run node server.js
+
